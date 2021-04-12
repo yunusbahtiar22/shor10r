@@ -1,7 +1,8 @@
 import os
 
 class Config:
-    USERNAME = "admin"
-    PASSWORD = "password"
+    """ Base Configuration """
+    USERNAME = 'admin'
+    PASSWORD = 'password'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = os.getenv("DATABSE_URL")
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or "sqlite:///url.db"
