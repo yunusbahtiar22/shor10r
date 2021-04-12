@@ -1,16 +1,21 @@
+import os
 from flask import Flask, jsonify
+from flask_sqlalchemy import SQLAlchemy
 
 
-# instanciate the app
-app = Flask(__name__)
+db = SQLAlchemy()
 
 
-@app.route('/')
-def index():
-    return jsonify({
-        "message": "Hello from shor10r",
-        "status": "success"
-    })
+def create_app():
+    # instanciate the app
+    app = Flask(__name__)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+    # pull the config
+    app_settings = os.getenv('APP_SETTINGS')
+    app.config.from_object(app_settings)
+
+    # setup extensions
+    db.init_app(app)
+
+    return app
+
