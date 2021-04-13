@@ -16,7 +16,7 @@ def index():
 def redirect_to_url(short_url):
     link = Link.query.filter_by(short_url=short_url).first_or_404()
 
-    link.visits = link.visits + 1
+    link.visits += 1
     db.session.commit()
 
     return redirect(link.original_url)
@@ -55,5 +55,3 @@ def delete_url(id):
 @short.errorhandler(404)
 def page_not_found(e):
     return '<h1>Page Not Found !</h1>', 404
-
-
