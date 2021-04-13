@@ -11,6 +11,7 @@ short = Blueprint('short', __name__)
 def index():
     return render_template('index.html')
 
+
 @short.route('/<short_url>')
 def redirect_to_url(short_url):
     link = Link.query.filter_by(short_url=short_url).first_or_404()
