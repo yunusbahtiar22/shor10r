@@ -1,0 +1,78 @@
+1.08 KB
+  
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shor10r</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script>function myFunction() {
+        /* Get the text field */
+        var copyText = document.getElementById("to-copy");
+      
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+      
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+      
+        /* Alert the copied text */
+        alert("Copied the text: " + copyText.value);
+        }
+    </script>
+    <!-- <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+            }
+    </script> -->
+    <style>
+        button {
+            height:10px;
+            width:100px;
+            border-radius:8px;
+            padding:5px;
+            font-size:15px;
+            font-family: 'Oswald', sans-serif;
+            height:30px;
+            cursor:pointer;
+            background-color: wheat;
+            }
+    </style>
+  </head>
+  <body>
+  <section class="section">
+    <div class="container">
+            <div class="field">
+                <label class="label">Original URL</label>
+                <div class="control">
+                    <input class="input" type="text" name="original_url" value="{{ original_url }}">
+                </div>
+            </div>
+            <div class="field">
+                    <label class="label">New URL</label>
+                    <div class="control">
+                        <input id="to-copy" class="input" type="text" name="original_url" value="{{ url_for('short.redirect_to_url', short_url=new_link, _external=True) }}"><br><br>
+                        <button onclick="myFunction()">Copy url</button><br><br>
+                        <button><a href="{{ url_for('short.index') }}">Home</a></button>
+                    </div>
+            </div>
+    </div>
+  </section>
+  <script>
+    function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+        }
+</script>
+  </body>
+</html>

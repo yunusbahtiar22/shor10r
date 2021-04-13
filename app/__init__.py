@@ -1,9 +1,10 @@
 import os
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from app.extension import db
+from app.routes import short
 
 
-db = SQLAlchemy()
+# db = SQLAlchemy()
 
 
 def create_app():
@@ -16,11 +17,7 @@ def create_app():
     # setup extensions
     db.init_app(app)
 
-    #app.shell_context_processor({"app": app, "db": db})
+    # register blueprint
+    app.register_blueprint(short)
 
     return app
-
-def new_func():
-    app_settings = os.getenv('APP_SETTINGS')
-    return app_settings
-

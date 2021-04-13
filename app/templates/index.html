@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>Shor10r</title>
+<meta charset="utf-8">
+<style> 
+    
+    body{ 
+    background-image:url(https://www.ilmubahasa.net/wp-content/uploads/2018/10/backgroundkeren1-630x380.jpg); 
+    background-size:cover; 
+    background-attachment: fixed; } 
+    h2 {
+        color: wheat;
+    }
+    p{
+        color:white;
+        } 
+</style>
+
+<style type="text/css">
+    .a {
+        text-align: center;
+        margin: 50px;
+    }
+    .b {
+        margin: 250px auto;
+        width: 500px;
+        padding: 10px;
+
+    }
+    input[type=text] {
+        margin: 5px auto;
+        width: 100%;
+        padding: 10px;
+    }
+    input[type=submit] {
+        margin: 5px auto;
+        float: right;
+        padding: 5px;
+        width: 90px;
+        border: 1px solid #fff;
+        color: #fff;
+        background: red;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="a">
+    <h2>Welcome to Shor10r</h2>
+    <p>Paste or Type your url bellow</p>
+</div>    
+<div class="b">
+    <form method="POST" action="{{ url_for('short.add_url')}}">
+
+        <input type="text" name="original_url">
+        <input type="submit">
+
+    </form>
+</div>
+</body>
+</html>
