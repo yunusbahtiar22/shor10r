@@ -47,9 +47,9 @@
             <div class="field">
                     <label class="label">New URL</label>
                     <div class="control">
-                        <input id="to-copy" class="input" type="text" name="original_url" value="{{ url_for('short.redirect_to_url', short_url=new_link, _external=True) }}"><br><br>
+                        <input id="to-copy" class="input" type="text" name="original_url" value="{{ url_for('shortener.redirect_to_url', short_url=new_link, _external=True) }}"><br><br>
                         <button onclick="myFunction()">Copy url</button><br><br>
-                        <button><a href="{{ url_for('short.index') }}">Home</a></button>
+                        <button><a href="{{ url_for('shortener.index') }}">Home</a></button>
                     </div>
             </div>
     </div>

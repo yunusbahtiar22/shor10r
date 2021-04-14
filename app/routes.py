@@ -1,18 +1,18 @@
 from flask import Blueprint, request, render_template, redirect, url_for
 from app.models import Link
-from app.extension import db 
+from app.ext import db 
 from app.auth import requires_auth
 
 
-short = Blueprint('short', __name__)
+shortener = Blueprint('shortener', __name__)
 
 
-@short.route('/')
+@shortener.route('/')
 def index():
     return render_template('index.html')
 
 
-@short.route('/<short_url>')
+@shortener.route('/<short_url>')
 def redirect_to_url(short_url):
     link = Link.query.filter_by(short_url=short_url).first_or_404()
 
@@ -22,7 +22,7 @@ def redirect_to_url(short_url):
     return redirect(link.original_url)
 
 
-@short.route('/add_url', methods=['POST'])
+@shortener.route('/add_url', methods=['POST'])
 def add_url():
     original_url = request.form['original_url']
     link = Link(original_url=original_url)
@@ -33,7 +33,7 @@ def add_url():
         new_link=link.short_url, original_url=link.original_url)
 
 
-@short.route('/stats')
+@shortener.route('/stats')
 @requires_auth
 def stats():
     links = Link.query.all()
@@ -41,7 +41,7 @@ def stats():
     return render_template('stats.html', links=links)
 
 
-@short.route('/delete/<int:id>')
+@shortener.route('/delete/<int:id>')
 def delete_url(id):
     url_to_delete = Link.query.get_or_404(id)
     try:
@@ -52,6 +52,6 @@ def delete_url(id):
     
     return redirect('/stats')
     
-@short.errorhandler(404)
+@shortener.errorhandler(404)
 def page_not_found(e):
     return '<h1>Page Not Found !</h1>', 404

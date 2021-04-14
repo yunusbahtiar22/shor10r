@@ -1,7 +1,7 @@
 import os
 from flask import Flask
-from app.extension import db
-from app.routes import short
+from app.ext import db
+from app.routes import shortener
 
 
 # db = SQLAlchemy()
@@ -18,6 +18,6 @@ def create_app():
     db.init_app(app)
 
     # register blueprint
-    app.register_blueprint(short)
+    app.register_blueprint(shortener)
 
     return app
