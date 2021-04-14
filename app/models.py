@@ -1,5 +1,5 @@
 import string
-from app.extension import db
+from app.ext import db
 from datetime import datetime
 from random import choices
 

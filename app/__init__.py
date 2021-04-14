@@ -1,4 +1,3 @@
-import os
 from flask import Flask
 from app.ext import db
 from app.routes import shortener
