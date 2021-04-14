@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, redirect, url_for
+from flask import Blueprint, request, render_template, redirect
 from app.models import Link
 from app.ext import db 
 from app.auth import requires_auth
